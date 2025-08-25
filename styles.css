@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #fff0f3;
+    background: linear-gradient(135deg, #faf3e8 0%, #f4e4c8 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +33,7 @@ h1 {
 }
 
 .heart {
-    color: #ff4d6d;
+    color: #d4af37;
     font-size: 3.5rem;
     animation: pulse 1.5s infinite;
     display: inline-block;
@@ -43,8 +43,8 @@ h1 {
 
 .envelope-container {
     position: relative;
-    width: 300px;
-    height: 220px;
+    width: 450px;
+    height: 320px;
     margin: 0 auto 50px;
     perspective: 1000px;
     cursor: pointer;
@@ -56,8 +56,14 @@ h1 {
     position: relative;
     transform-style: preserve-3d;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 /* Zarf kapağı */
@@ -65,11 +71,11 @@ h1 {
     position: absolute;
     width: 100%;
     height: 50%;
-    background-color: #ffbdce;
-    border-radius: 10px 10px 0 0;
+    background-color: #d4b8a3;
+    border-radius: 15px 15px 0 0;
     top: 0;
     transform-origin: bottom;
-    transition: transform 0.5s;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 3;
     overflow: hidden;
 }
@@ -79,7 +85,7 @@ h1 {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #ffc8d7;
+    background-color: #e6c497;
     clip-path: polygon(0 0, 50% 100%, 100% 0);
     top: 0;
     left: 0;
@@ -90,8 +96,8 @@ h1 {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #ffbdce;
-    border-radius: 10px;
+    background-color: #d4b8a3;
+    border-radius: 15px;
     z-index: 1;
 }
 
@@ -100,9 +106,9 @@ h1 {
     position: absolute;
     width: 100%;
     height: 50%;
-    background-color: #ffc8d7;
+    background-color: #e6c497;
     bottom: 0;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 15px 15px;
     clip-path: polygon(0 100%, 50% 0, 100% 100%);
 }
 
@@ -112,17 +118,18 @@ h1 {
 }
 
 .heart-seal {
-    width: 40px;
-    height: 40px;
-    background-color: #ff4d6d;
+    width: 50px;
+    height: 50px;
+    background-color: #d4af37;
     transform: rotate(45deg);
     position: absolute;
     z-index: 4;
     top: 50%;
     left: 50%;
-    margin-top: -20px;
-    margin-left: -20px;
-    transition: opacity 0.3s, transform 0.5s;
+    margin-top: -25px;
+    margin-left: -25px;
+    transition: opacity 0.4s, transform 0.6s;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
 .envelope.open .heart-seal {
@@ -133,66 +140,68 @@ h1 {
 .heart-seal::before,
 .heart-seal::after {
     content: '';
-    width: 40px;
-    height: 40px;
-    background-color: #ff4d6d;
+    width: 50px;
+    height: 50px;
+    background-color: #d4af37;
     border-radius: 50%;
     position: absolute;
 }
 
 .heart-seal::before {
-    top: -20px;
+    top: -25px;
     left: 0;
 }
 
 .heart-seal::after {
     top: 0;
-    left: -20px;
+    left: -25px;
 }
 
 .letter {
     position: absolute;
-    width: 90%;
+    width: 85%;
     height: 0;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.5s ease;
+    transform: translateY(60px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 2;
-    top: 10px;
-    left: 5%;
+    top: 15px;
+    left: 7.5%;
     overflow: hidden;
     cursor: pointer;
+    border: 2px solid #f8f5f0;
 }
 
 .letter.visible {
     opacity: 1;
-    height: 80%;
-    transform: translateY(20px);
+    height: 75%;
+    transform: translateY(30px);
 }
 
 .letter.show {
-    transform: translateY(-150px);
-    max-height: 400px;
-    height: 400px;
-    padding: 20px;
+    transform: translateY(-200px) scale(1.1);
+    max-height: 500px;
+    height: 500px;
+    padding: 30px;
     overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .letter-content {
     color: #333;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.7;
     text-align: left;
-    padding: 10px;
+    padding: 15px;
     height: 100%;
     overflow-y: auto;
-    max-height: 360px;
+    max-height: 450px;
     scrollbar-width: thin;
-    scrollbar-color: #ffbdce transparent;
+    scrollbar-color: #d4b8a3 transparent;
 }
 
 .letter-content::-webkit-scrollbar {
@@ -204,13 +213,13 @@ h1 {
 }
 
 .letter-content::-webkit-scrollbar-thumb {
-    background-color: #ffbdce;
+    background-color: #d4b8a3;
     border-radius: 20px;
 }
 
 h2 {
     font-family: 'Dancing Script', cursive;
-    color: #ff4d6d;
+    color: #d4af37;
     margin-bottom: 15px;
     font-size: 1.8rem;
 }
@@ -222,7 +231,7 @@ h2 {
 .signature {
     font-family: 'Dancing Script', cursive;
     font-size: 1.2rem;
-    color: #ff4d6d;
+    color: #d4af37;
     text-align: right;
     margin-top: 20px;
     font-weight: bold;
@@ -253,7 +262,19 @@ h2 {
     }
     
     .envelope-container {
-        width: 280px;
-        height: 200px;
+        width: 350px;
+        height: 250px;
+    }
+    
+    .letter.show {
+        transform: translateY(-150px) scale(1.05);
+        height: 400px;
+        max-height: 400px;
+        padding: 20px;
+    }
+    
+    .letter-content {
+        font-size: 14px;
+        max-height: 350px;
     }
 } 
